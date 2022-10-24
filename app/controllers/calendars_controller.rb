@@ -23,7 +23,10 @@ class CalendarsController < ApplicationController
   end
 
   def getWeek
+    #この定義内で曜日と日付と予定の３つを一括でまとめてる　学習メモ
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
+    
+
 
     # Dateオブジェクトは、日付を保持しています。下記のように`.today.day`とすると、今日の日付を取得できます。
     @todays_date = Date.today
@@ -37,9 +40,22 @@ class CalendarsController < ApplicationController
       today_plans = []
       plans.each do |plan|
         today_plans.push(plan.plan) if plan.date == @todays_date + x
+        #.dateはカラムです。学習メモ
+        #plan（一行）の中のplan。pulan（一行）の中のdate。学習メモ
       end
-      days = { :month => (@todays_date + x).month, :date => (@todays_date+x).day, :plans => today_plans}
+      y = Date.today.wday + x
+      #現在、番号が返ってきてる
+
+      wday_num = Date.today.wday + x
+      if wday_num >= 7
+        wday_num = wday_num - 7
+        y = wday_num 
+      end
+
+      days = { :month => (@todays_date + x).month, :date => (@todays_date + x).day, :plans => today_plans, :wday => wdays[y] }
       @week_days.push(days)
+      #42行目のdaysを43行目のdaysに代入　学習メモ
+      #37〜43行目までは予定に関すること学習メモ
     end
 
   end
