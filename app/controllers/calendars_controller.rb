@@ -2,7 +2,7 @@ class CalendarsController < ApplicationController
 
   # １週間のカレンダーと予定が表示されるページ
   def index
-    getWeek
+    get_week
     @plan = Plan.new
     #paramsの中のplanは、ここで指定された！！学習用メモ
   end
@@ -21,6 +21,7 @@ class CalendarsController < ApplicationController
     #カレンダーの中のdateとplanが入っている 学習用メモ
     #カレンダーズなんて元々存在しないモデル名 学習用メモ
   end
+
 
   def getWeek
     #この定義内で曜日と日付と予定の３つを一括でまとめてる　学習メモ
@@ -51,6 +52,7 @@ class CalendarsController < ApplicationController
         wday_num = wday_num - 7
         y = wday_num 
       end
+
 
       days = { :month => (@todays_date + x).month, :date => (@todays_date + x).day, :plans => today_plans, :wday => wdays[y] }
       @week_days.push(days)
