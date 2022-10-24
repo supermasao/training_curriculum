@@ -4,6 +4,7 @@ class CalendarsController < ApplicationController
   def index
     getWeek
     @plan = Plan.new
+    #paramsの中のplanは、ここで指定された！！学習用メモ
   end
 
   # 予定の保存
@@ -15,7 +16,10 @@ class CalendarsController < ApplicationController
   private
 
   def plan_params
-    params.require(:calendars).permit(:date, :plan)
+    params.require(:plan).permit(:date, :plan)
+    #params.require(:calendars).permit(:date, :plan) 学習用メモ
+    #カレンダーの中のdateとplanが入っている 学習用メモ
+    #カレンダーズなんて元々存在しないモデル名 学習用メモ
   end
 
   def getWeek
