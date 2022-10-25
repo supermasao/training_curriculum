@@ -23,7 +23,7 @@ class CalendarsController < ApplicationController
   end
 
 
-  def getWeek
+  def get_week
     #この定義内で曜日と日付と予定の３つを一括でまとめてる　学習メモ
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
     
