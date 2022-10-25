@@ -22,6 +22,7 @@ class CalendarsController < ApplicationController
     #カレンダーズなんて元々存在しないモデル名 学習用メモ
   end
 
+
   def getWeek
     #この定義内で曜日と日付と予定の３つを一括でまとめてる　学習メモ
     wdays = ['(日)','(月)','(火)','(水)','(木)','(金)','(土)']
@@ -53,6 +54,7 @@ class CalendarsController < ApplicationController
       end
 
       days = { month: (@todays_date + x).month, date: (@todays_date + x).day, plans: today_plans, wday: wdays[y] }
+
       @week_days.push(days)
       #42行目のdaysを43行目のdaysに代入　学習メモ
       #37〜43行目までは予定に関すること学習メモ
